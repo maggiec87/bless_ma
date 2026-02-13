@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉2026年春节乐</title>
+    <title>🎉2026年新春快乐 🎉</title>
     <style>
         body {
             font-family: 'Microsoft YaHei', sans-serif;
-            background: #b71c1c; /* 深中国红 */
+            background: #b71c1c; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,9 +20,9 @@
             background: #d32f2f;
             padding: 30px;
             border-radius: 20px;
-            border: 4px solid #ffca28; /* 金边 */
+            border: 4px solid #ffca28; 
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            width: 380px; /* 固定宽度让布局更紧凑 */
+            width: 380px; 
         }
         h1 { 
             font-size: 1.8em; 
@@ -30,22 +30,24 @@
             color: #ffca28; 
             letter-spacing: 2px;
         }
-        /* 祝福语展示区 - 类似信笺或卡片 */
+        /* 祝福语展示区 */
         #wish-display {
             background: rgba(0, 0, 0, 0.1);
             border-radius: 12px;
-            height: 120px;
+            height: 100px; /* 固定高度防止抖动 */
             display: flex;
+            flex-direction: column; /* 纵向排列 */
             align-items: center;
             justify-content: center;
             padding: 15px;
             font-size: 1.3em;
             font-weight: bold;
-            line-height: 1.5;
+            line-height: 1.4; /* 紧凑行间距 */
             margin-bottom: 25px;
             border: 1px solid rgba(255, 202, 40, 0.3);
+            overflow: hidden;
         }
-        /* 送祝福按钮 */
+        /* 按钮样式 */
         .btn-send {
             background: #ffca28;
             color: #b71c1c;
@@ -55,67 +57,79 @@
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 0 #c79100; /* 按钮厚度感 */
+            box-shadow: 0 4px 0 #c79100;
             transition: all 0.1s;
         }
-        .btn-send:hover {
-            background: #ffe082;
-            transform: translateY(-2px);
-        }
-        .btn-send:active {
-            transform: translateY(2px);
-            box-shadow: none;
-        }
+        .btn-send:hover { background: #ffe082; transform: translateY(-2px); }
+        .btn-send:active { transform: translateY(2px); box-shadow: none; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🐎马 · 福 · 到</h1>
+    <h1>🐎2026 新春快乐 🎉</h1>
     
     <div id="wish-display">
-        点下方按钮<br>得马年福气
+        <div>🐎祝福</div>
+        <div>⬇️获取</div>
     </div>
 
-    <button class="btn-send" onclick="getRandomWish()">福 到</button>
+    <button class="btn-send" onclick="getRandomWish()">🐎福 到🐎</button>
 </div>
 
 <script>
     const wishes = [
-    // --- 经典篇 (50句) ---
-    "马到成功，旗开得胜！", "龙马精神，神采奕奕！", "一马当先，步步高升！", "万马奔腾，气势如虹！", "策马扬鞭，前程似锦！",
-    "天马行空，创意无限！", "马不停蹄，财源广进！", "老马识途，慧眼识珠！", "汗马功劳，实至名归！", "快马加鞭，更上一层楼！",
-    "龙腾马跃，山河壮阔！", "鲜衣怒马，不负韶华！", "跃马扬鞭，宏图大展！", "走马上任，大权在握！", "马首是瞻，众望所归！",
-    "车水马龙，繁荣昌盛！", "倚马可待，才思敏捷！", "戎马丹心，一生平安！", "金马报喜，福满乾坤！", "马年大吉，合家欢乐！",
-    "春风得意，马蹄声疾！", "马啸东风，喜气盈门！", "神马报喜，福寿双全！", "金马奔腾，财运亨通！", "龙马舞春，万事顺遂！",
-    "骏马追风，志在千里！", "马鸣风萧，志存高远！", "一马平川，前途无量！", "马到功成，梦想成真！", "马跃平原，广纳钱源！",
-    "策马争春，好运敲门！", "马到福随，喜笑颜开！", "跃马迎春，福满人间！", "马运亨通，心想事成！", "龙腾马跃，喜气临门！",
-    "骏马登程，前路光明！", "马踏飞燕，平步青云！", "马年送吉，福禄双全！", "马不停蹄，好运不息！", "马年如意，万事顺心！",
-    "万马奔腾，共创辉煌！", "金马献瑞，大吉大利！", "马鸣盛世，岁岁平安！", "策马高歌，快乐如歌！", "马到福来，好运常在！",
-    "骏马奔腾，财源茂盛！", "马跃龙腾，更进一程！", "马年祥瑞，幸福万年！", "马报平安，福寿齐天！", "龙马精神，岁岁今朝！",
+        // --- 经典篇 (部分示例) ---
+        "马到成功，旗开得胜！", "龙马精神，神采奕奕！", "一马当先，步步高升！", "万马奔腾，气势如虹！", "策马扬鞭，前程似锦！",
+        "天马行空，创意无限！", "马不停蹄，财源广进！", "老马识途，慧眼识珠！", "汗马功劳，实至名归！", "快马加鞭，更上一层楼！",
+        "龙腾马跃，山河壮阔！", "鲜衣怒马，不负韶华！", "跃马扬鞭，宏图大展！", "走马上任，大权在握！", "马首是瞻，众望所归！",
+        "车水马龙，繁荣昌盛！", "倚马可待，才思敏捷！", "戎马丹心，一生平安！", "金马报喜，福满乾坤！", "马年大吉，合家欢乐！",
+        "春风得意，马蹄声疾！", "马啸东风，喜气盈门！", "神马报喜，福寿双全！", "金马奔腾，财运亨通！", "龙马舞春，万事顺遂！",
+        "骏马追风，志在千里！", "马鸣风萧，志存高远！", "一马平川，前途无量！", "马到功成，梦想成真！", "马跃平原，广纳钱源！",
+        "策马争春，好运敲门！", "马到福随，喜笑颜开！", "跃马迎春，福满人间！", "马运亨通，心想事成！", "龙腾马跃，喜气临门！",
+        "骏马登程，前路光明！", "马踏飞燕，平步青云！", "马年送吉，福禄双全！", "马不停蹄，好运不息！", "马年如意，万事顺心！",
+        "万马奔腾，共创辉煌！", "金马献瑞，大吉大利！", "马鸣盛世，岁岁平安！", "策马高歌，快乐如歌！", "马到福来，好运常在！",
+        "骏马奔腾，财源茂盛！", "马跃龙腾，更进一程！", "马年祥瑞，幸福万年！", "马报平安，福寿齐天！", "龙马精神，岁岁今朝！",
 
-    // --- 现代篇 (50句) ---
-    "拒绝牛马，只做骏马！", "马力全开，拒绝内卷！", "好运加码，马上致富！", "事业黑马，逆袭必胜！", "快乐马上，烦恼清零！",
-    "马上有钱，存款翻番！", "马上有房，住进天堂！", "马上脱单，爱情美满！", "马甲线有，身材走秀！", "马力十足，永不疲惫！",
-    "拒绝马虎，万事稳固！", "马上放假，快乐到家！", "马上面试，一投必过！", "马上涨薪，老板贴心！", "神马都有，啥都不愁！",
-    "马力冲天，薪资翻天！", "不做马大哈，稳赢全家！", "马上转运，锦鲤附身！", "马不停蹄，奔向心仪！", "马上升职，不费心思！",
-    "马力满格，状态无敌！", "马上出发，环游天下！", "马上开挂，路子超大！", "颜值马力，双重暴击！", "马上通关，生活不难！",
-    "马年限定，好运指定！", "马上变美，自信不悔！", "马到成功，拒绝做梦！", "马力加持，业绩如诗！", "马上吃肉，不长肥肉！",
-    "马上躺平，心情安宁！", "马上起飞，快乐翻倍！", "马上躺赢，生活轻盈！", "马力强劲，财气逼人！", "马力澎湃，人见人爱！",
-    "马上有戏，全场第一！", "马上暴富，钱途广阔！", "马不停蹄，快乐第一！", "马上聚餐，好胃常在！", "马力觉醒，不再清醒！",
-    "马上顺心，生活如金！", "马上惊喜，锦上添花！", "马上自由，快乐无忧！", "马上升温，感情加分！", "马上得奖，财气满仓！",
-    "马力加速，抛弃忧郁！", "马上见面，好运不断！", "马上搞定，事事顺心！", "马上升咖，你是大咖！", "马年2026，一路溜溜！"
-];
+        // --- 现代篇 ---
+        "拒绝牛马，只做骏马！", "马力全开，拒绝内卷！", "好运加码，马上致富！", "事业黑马，逆袭必胜！", "快乐马上，烦恼清零！",
+        "马上有钱，存款翻番！", "马上有房，住进天堂！", "马上脱单，爱情美满！", "马甲线有，身材走秀！", "马力十足，永不疲惫！",
+        "拒绝马虎，万事稳固！", "马上放假，快乐到家！", "马上面试，一投必过！", "马上涨薪，老板贴心！", "神马都有，啥都不愁！",
+        "马力冲天，薪资翻天！", "不做马大哈，稳赢全家！", "马上转运，锦鲤附身！", "马不停蹄，奔向心仪！", "马上升职，不费心思！",
+        "马力满格，状态无敌！", "马上出发，环游天下！", "马上开挂，路子超大！", "颜值马力，双重暴击！", "马上通关，生活不难！",
+        "马年限定，好运指定！", "马上变美，自信不悔！", "马到成功，拒绝做梦！", "马力加持，业绩如诗！", "马上吃肉，不长肥肉！",
+        "马上躺平，心情安宁！", "马上起飞，快乐翻倍！", "马上躺赢，生活轻盈！", "马力强劲，财气逼人！", "马力澎湃，人见人爱！",
+        "马上有戏，全场第一！", "马上暴富，钱途广阔！", "马不停蹄，快乐第一！", "马上聚餐，好胃常在！", "马力觉醒，不再清醒！",
+        "马上顺心，生活如金！", "马上惊喜，锦上添花！", "马上自由，快乐无忧！", "马上升温，感情加分！", "马上得奖，财气满仓！",
+        "马力加速，抛弃忧郁！", "马上见面，好运不断！", "马上搞定，事事顺心！", "马上升咖，你是大咖！", "马年2026，一路溜溜！"
+    ];
+
+    function formatWish(text) {
+        // 自动按标点符号拆分为两行，如果没有标点则平分
+        const puncs = ["，", "！", " ", "。"];
+        for (let p of puncs) {
+            if (text.includes(p)) {
+                let parts = text.split(p);
+                // 重新组合，带上标点效果更好
+                return `<div>${parts[0]}${p}</div><div>${parts[1]}</div>`;
+            }
+        }
+        // 如果没有标点，中间切断
+        let mid = Math.floor(text.length / 2);
+        return `<div>${text.substring(0, mid)}</div><div>${text.substring(mid)}</div>`;
+    }
 
     function getRandomWish() {
         const display = document.getElementById('wish-display');
         let count = 0;
         const timer = setInterval(() => {
-            display.innerText = wishes[Math.floor(Math.random() * wishes.length)];
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            display.innerHTML = formatWish(randomWish);
             count++;
             if (count > 8) {
                 clearInterval(timer);
-                display.innerText = wishes[Math.floor(Math.random() * wishes.length)];
+                const finalWish = wishes[Math.floor(Math.random() * wishes.length)];
+                display.innerHTML = formatWish(finalWish);
             }
         }, 50);
     }
